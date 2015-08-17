@@ -38,13 +38,14 @@ $ npm install express-session --save
 ```
 
 ##Code-along
-First, we're going to mount our session middleware on our express application. For the solution, see branch **mount-middleware**.
+First, we're going to mount our session middleware on our express application. For the solution, see branch **mount-session**.
 
-Next, we will write some routes that generate, store, and transform session
+Next, we will look into storing our session data in an actual database
+using the `connect-mongo` module. For the solution, see branch
+**mongo-storage**.
+
+Finally, we will write some routes that generate, store, and transform session
 data.
-
-Finally, we will look into storing our session data in an actual database
-using the `connect-mongo` module.
 
 As a bonus, if we blaze through this material in record time, we'll might look
 into session hijacking.
