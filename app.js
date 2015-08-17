@@ -4,6 +4,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var uuid = require('uuid');
+var MongoStore = require('connect-mongo')(session);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -23,7 +24,9 @@ app.use(session({
 	secret : "totally bogus secret dude",
 	resave : false,
 	saveUninitialized : false,
-	//store
+	store : new MongoStore({
+		url : "mongodb://localhost/sessions"
+	}),
 	cookie : {
 		maxAge : 300000 // 5 minutes
 	},
