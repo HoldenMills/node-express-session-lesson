@@ -3,6 +3,7 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var uuid = require('node-uuid');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -25,8 +26,10 @@ app.use(session({
 	//store
 	cookie : {
 		maxAge : 300000 // 5 minutes
-	}//,
-	//genid
+	},
+	genid : function(req) {
+		return uuid.v4();
+	}
 }));
 
 app.use('/', routes);
