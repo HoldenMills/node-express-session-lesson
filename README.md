@@ -1,4 +1,4 @@
-#Express and Session storage
+#Express and Sessions
 
 ##Objectives
 Students will be able to...
@@ -6,8 +6,8 @@ Students will be able to...
 - ... mount session middleware in the correct order on an express application
 - ... store, retrieve, and transform session data on each request
 
-##What do we need session storage for?
-We need session storage as a server-side store of client data.
+##What do we need sessions for?
+We need sessions as a server-side store of client data.
 
 Specifically, we use it to store data that doesn't need long-term persistence,
 but will likely be used again, potentially for the last time, when the same
