@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -17,6 +18,16 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+	secret : "totally bogus secret dude",
+	resave : false,
+	saveUninitialized : false,
+	//store
+	cookie : {
+		maxAge : 300000 // 5 minutes
+	}//,
+	//genid
+}));
 
 app.use('/', routes);
 app.use('/users', users);
