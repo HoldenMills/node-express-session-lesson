@@ -49,3 +49,29 @@ data.
 
 As a bonus, if we blaze through this material in record time, we'll might look
 into session hijacking.
+
+##Lab
+Get into your project groups and create a fresh file in your `routes` directory.
+
+```bash
+$ cd routes
+$ touch lab.js
+```
+
+Write a module to build and export a `Router`. Use `routes/index.js` as a reference if necessary.
+
+The `Router` must have at least one of the following types of routes:
+
+- a GET route that reads session data and sends it in a response
+- a DELETE route that destroys a session data attribute
+- a route that transforms session data somehow. By *transform*, I mean change
+in some way.
+
+Reach:
+
+- attach a middleware to your `Router` that runs before any of your route
+handlers. It should increment a counter variable in the user's session, or
+initialize the counter if it does not already exist.
+
+##Demo
+Session hijacking, if there is time.
