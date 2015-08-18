@@ -47,7 +47,7 @@ using the `connect-mongo` module. For the solution, see branch
 Finally, we will write some routes that generate, store, and transform session
 data.
 
-As a bonus, if we blaze through this material in record time, we'll might look
+As a bonus, if we blaze through this material in record time, we might look
 into session hijacking.
 
 ##Lab
