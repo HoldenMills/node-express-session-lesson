@@ -75,3 +75,14 @@ initialize the counter if it does not already exist.
 
 ##Demo
 Session hijacking, if there is time.
+
+Steps for instructor or reviewing student:
+- install Wireshark
+- run Wireshark and begin capturing on the network interface to be used to make requests
+- search capture log for HTTP traffic corresponding to the requests made to the back-end
+- show students/observe the `set-cookie` header send by the server
+- show students/observe the `Cookie` header sent by the client on subsequent requests
+- use Postman with the Interceptor add-on to alter the `Cookie` header
+- send requests using a cookie that belongs to another user's session, hijacking it
+- perform requests against that session that significantly alter its state
+
