@@ -2,6 +2,10 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var uuid = require('uuid');
+require('dotenv').load();
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -17,6 +21,22 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+	secret : process.env.SESSION_SECRET,
+	store : new MongoStore({
+		url: 'mongodb://localhost/ga-express-session'
+	}),
+	saveUninitialized : false,
+	resave : false,
+	genid : function(req) {
+		return uuid.v4({
+			rng : uuid.nodeRNG
+		});
+	},
+	cookie : {
+		maxAge : 300000 // 5 minutes
+	}
+}));
 
 app.use('/', routes);
 app.use('/users', users);
